@@ -1,21 +1,28 @@
 package com.easydados.services;
 
+import com.easydados.domain.User;
+import com.easydados.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
 
-    public List<String> findAllUsers() {
-        ArrayList<String> users = new ArrayList<>();
+    @Autowired
+    private UserRepository repository;
 
-        users.add("Wesley");
-        users.add("Paulo");
-        users.add("E Pedrin");
+    public void saveUser(User user) {
+        this.repository.save(user);
+    }
 
+//    public User findUserById(Long id) throws Exception{
+//        return this.repository.findUserById(id).orElseThrow(() -> new Exception("user not found"));
+//    }
 
-        return users;
+    public List<User> getAllUsers() {
+        return this.repository.findAll();
     }
 }

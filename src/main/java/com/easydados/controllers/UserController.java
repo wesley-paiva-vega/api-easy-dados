@@ -1,5 +1,6 @@
 package com.easydados.controllers;
 
+import com.easydados.domain.User;
 import com.easydados.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,8 +19,8 @@ public class UserController {
     private UserService users;
 
     @GetMapping()
-    public ResponseEntity<List<String>> getAllUsers(){
-        List<String> users = this.users.findAllUsers();
+    public ResponseEntity<List<User>> getAllUsers(){
+        List<User> users = this.users.getAllUsers();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 }
