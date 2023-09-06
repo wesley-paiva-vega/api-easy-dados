@@ -28,4 +28,9 @@ public class UserController {
         User newUser = userService.createUser(user);
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
+
+    @GetMapping(value = "/{id}")
+    public User getUserById(@PathVariable Long id) throws Exception {
+        return userService.getUser(id);
+    }
 }
