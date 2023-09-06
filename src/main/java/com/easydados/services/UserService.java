@@ -1,6 +1,7 @@
 package com.easydados.services;
 
 import com.easydados.domain.User;
+import com.easydados.dtos.UserDTO;
 import com.easydados.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,9 +15,13 @@ public class UserService {
     @Autowired
     private UserRepository repository;
 
-    public void saveUser(User user) {
-        this.repository.save(user);
+    public User createUser(UserDTO data) {
+        User newUser = new User(data);
+       this.saveUser(newUser);
+       return  newUser;
     }
+
+    public void saveUser(User user) { this.repository.save(user); }
 
 //    public User findUserById(Long id) throws Exception{
 //        return this.repository.findUserById(id).orElseThrow(() -> new Exception("user not found"));

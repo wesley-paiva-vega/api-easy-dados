@@ -1,5 +1,6 @@
 package com.easydados.domain;
 
+import com.easydados.dtos.UserDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,9 +27,15 @@ public class User {
     @Column(unique = true)
     private String email;
 
-    private String password;
-
     @Enumerated(EnumType.STRING)
     private UserType userType;
+
+    public User(UserDTO data) {
+        this.firstName = data.firstName();
+        this.lastName = data.lastName();
+        this.email = data.email();
+        this.document = data.document();
+        this.userType = data.userType();
+    }
 
 }
