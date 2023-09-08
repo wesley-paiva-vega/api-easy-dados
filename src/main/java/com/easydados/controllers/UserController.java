@@ -33,4 +33,10 @@ public class UserController {
     public User getUserById(@PathVariable Long id) throws Exception {
         return userService.getUser(id);
     }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return ResponseEntity.noContent().header("message", "Usuario deletado com sucesso").build();
+    }
 }
