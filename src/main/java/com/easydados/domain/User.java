@@ -1,7 +1,5 @@
 package com.easydados.domain;
 
-import java.util.UUID;
-
 import com.easydados.dtos.UserDTO;
 import jakarta.persistence.*;
 import lombok.*;
