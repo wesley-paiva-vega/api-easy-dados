@@ -3,6 +3,8 @@ package com.easydados.domain;
 import java.util.List;
 
 import com.easydados.dtos.UserDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.*;
 
