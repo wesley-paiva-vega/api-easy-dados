@@ -1,5 +1,7 @@
 package com.easydados.domain;
 
+import java.util.List;
+
 import com.easydados.dtos.UserDTO;
 import jakarta.persistence.*;
 import lombok.*;
@@ -29,6 +31,10 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private UserType userType;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<UserExperience> userExperiences;
+
 
     public User(UserDTO data) {
         this.firstName = data.firstName();

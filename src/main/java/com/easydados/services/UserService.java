@@ -22,8 +22,8 @@ public class UserService {
 
     public void saveUser(User user) { this.repository.save(user); }
 
-    public User getUser(Long id) throws Exception{
-        return this.repository.findUserById(id).orElseThrow(() -> new Exception("User not found"));
+    public User getUser(Long id) {
+        return this.repository.findUserById(id);
     }
 
     public List<User> getAllUsers() {
