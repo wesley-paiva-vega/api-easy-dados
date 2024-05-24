@@ -10,7 +10,7 @@ import com.easydados.repositories.UserExperienceRepository;
 
 @Service
 public class UserExperienceService {
-    
+
     @Autowired
     private UserExperienceRepository userExperienceRepository;
 
@@ -27,14 +27,15 @@ public class UserExperienceService {
 
         if (user == null) {
             throw new Exception("Usuário não encontrado com ID: " + id);
-        } else {
-            UserExperience newUserExperience = new UserExperience(data);
-            newUserExperience.setUser(user);
-
-            this.saveUserExperience(newUserExperience);
-
-            System.out.println(newUserExperience + " User aqui");
-            return newUserExperience;
         }
+
+        UserExperience newUserExperience = new UserExperience(data);
+        newUserExperience.setUser(user);
+
+        this.saveUserExperience(newUserExperience);
+
+        System.out.println(newUserExperience + " User aqui");
+        return newUserExperience;
+
     }
 }

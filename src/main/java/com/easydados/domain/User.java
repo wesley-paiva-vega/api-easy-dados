@@ -1,9 +1,9 @@
 package com.easydados.domain;
 
+import java.util.Date;
 import java.util.List;
 
 import com.easydados.dtos.UserDTO;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -14,7 +14,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(of="id")
+@EqualsAndHashCode(of = "id")
 
 public class User {
     @Id
@@ -25,8 +25,18 @@ public class User {
 
     private String lastName;
 
+    private String phoneNumber;
+
+    private String country;
+
+    private String cpf;
+
+    private Date birthDay;
+
+    private String landLine;
+
     @Column(unique = true)
-    private  String document;
+    private String document;
 
     @Column(unique = true)
     private String email;
@@ -37,13 +47,17 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserExperience> userExperiences;
 
-
     public User(UserDTO data) {
         this.firstName = data.firstName();
         this.lastName = data.lastName();
         this.email = data.email();
         this.document = data.document();
+        this.cpf = data.cpf();
+        this.phoneNumber = data.phoneNumber();
+        this.country = data.country();
         this.userType = data.userType();
+        this.birthDay = data.birthDay();
+        this.landLine = data.lastName();
     }
 
 }

@@ -16,11 +16,13 @@ public class UserService {
 
     public User createUser(UserDTO data) {
         User newUser = new User(data);
-       this.saveUser(newUser);
-       return  newUser;
+        this.saveUser(newUser);
+        return newUser;
     }
 
-    public void saveUser(User user) { this.repository.save(user); }
+    public void saveUser(User user) {
+        this.repository.save(user);
+    }
 
     public User getUser(Long id) {
         return this.repository.findUserById(id);
